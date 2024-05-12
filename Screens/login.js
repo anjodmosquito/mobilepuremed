@@ -1,34 +1,56 @@
+import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, TouchableOpacity, Dimensions } from 'react-native';
-import { Feather } from '@expo/vector-icons'; // Import Feather icons from react-native-vector-icons
+import { StyleSheet, Text, View, Image, TouchableOpacity, Dimensions, TextInput, Alert } from 'react-native';
 
 const { width, height } = Dimensions.get('window');
 
 export default function App() {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = () => {
+    if (username === 'admin' && password === 'password') {
+      Alert.alert('Login Successful');
+    } else {
+      Alert.alert('Invalid Username or Password');
+    }
+  };
+
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.iconContainer}>
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-        <Feather name="home" size={32} color="black" />
-        <Text>Home Icon</Text>
-        </View>
-      </TouchableOpacity>
       <View style={styles.container1}>
         <Text style={styles.text}>
-           Experience the Puremed Pharmacy difference – reserve your medicines today and embark on a journey to better health with our exceptional care!
+          Experience the Puremed Pharmacy difference – reserve your medicines today and embark on a journey to better health with our exceptional care!
         </Text>
       </View>
       <Image source={require('./assets/puremed.jpg')} style={styles.image} />
-      
-      <View style={styles.bottomIconsContainer}>
-        <TouchableOpacity style={styles.bottomIcon}>
-          <Feather name="home" size={24} color="black" />
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <TextInput
+        style={{ height: 40, width: 300, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10 }}
+        placeholder="Username"
+        onChangeText={text => setUsername(text)}
+        value={username}
+      />
+      <TextInput
+        style={{ height: 40, width: 300, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10 }}
+        placeholder="Password"
+        onChangeText={text => setPassword(text)}
+        value={password}
+        secureTextEntry={true}
+      />
+      <TouchableOpacity
+        style={{ backgroundColor: 'blue', padding: 10, borderRadius: 5 }}
+        onPress={handleLogin}
+      >
+        <Text style={{ color: 'white', fontWeight: 'bold' }}>Login</Text>
+      </TouchableOpacity>
+    </View>
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity style={styles.button} onPress={handleLogin}>
+          <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.bottomIcon}>
-          <Feather name="user" size={24} color="black" />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.bottomIcon}>
-          <Feather name="phone-call" size={24} color="black" />
+        <TouchableOpacity style={styles.buttonreg}>
+          <Text style={styles.buttonTextreg}>Register</Text>
         </TouchableOpacity>
       </View>
       <StatusBar style="auto" />
@@ -43,12 +65,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-around',
     padding: 20,
-  },
-  iconContainer: {
-    alignSelf: 'flex-start',
-    position: 'absolute',
-    top: 20,
-    left: 20,
   },
   container1: {
     flex: 0.3,
@@ -105,20 +121,5 @@ const styles = StyleSheet.create({
   buttonTextreg: {
     color: '#fff',
     fontSize: 18,
-  },
-  bottomIconsContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    width: '100%',
-    marginTop: 20,
-  },
-  bottomIcon: {
-    backgroundColor: '#ddd',
-    borderRadius: 25,
-    padding: 10,
-    width: 50,
-    height: 50,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });
