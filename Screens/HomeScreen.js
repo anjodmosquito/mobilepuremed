@@ -25,13 +25,16 @@ const HomeScreen = ({ navigation }) => {
       </View>
       <View style={styles.bottomIconsContainer}>
         <TouchableOpacity style={styles.bottomIcon} onPress={() => navigation.navigate('Home')}>
-          <Feather name="home" size={24} color="black" />
+          <Feather name="home" size={24} color="blue" />
         </TouchableOpacity>
         <TouchableOpacity style={styles.bottomIcon} onPress={() => navigation.navigate('User')}>
-          <Feather name="user" size={24} color="black" />
+          <Feather name="user" size={24} color="blue" />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.bottomIcon} onPress={() => navigation.navigate('Call')}>
-          <Feather name="phone-call" size={24} color="black" />
+        <TouchableOpacity style={styles.bottomIcon} onPress={() => navigation.navigate('Search')}>
+          <Feather name="search" size={24} color="blue" />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.bottomIcon} onPress={() => navigation.navigate('Chat')}>
+          <Feather name="message-circle" size={24} color="blue" />
         </TouchableOpacity>
       </View>
       <StatusBar style="auto" />
@@ -84,7 +87,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    width: '100%',
+    width: '90%',
     marginTop: 20,
   },
   button: {
@@ -113,16 +116,22 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     width: '100%',
-    marginTop: 20,
+    padding: 10,
+    position: 'absolute',
+    bottom: 0,
+    backgroundColor: '#fff',
+    borderTopWidth: 1,  // Add border only to the top
+  borderTopColor: '#ccc',  // Border color for the top
   },
   bottomIcon: {
-    backgroundColor: '#ddd',
-    borderRadius: 25,
-    padding: 10,
-    width: 50,
-    height: 50,
+    borderRadius: 10, // Adjust borderRadius to make corners less rounded
+    padding: 5,
+    width: 60, // Adjust width to make it rectangular
+    height: 40, // Adjust height to make it rectangular
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#f0f0f0', // Optional: Add background color to distinguish the button
+    
   },
 });
 

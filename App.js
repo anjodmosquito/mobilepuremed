@@ -5,7 +5,8 @@ import HomeScreen from './screens/HomeScreen';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import UserScreen from './screens/UserScreen'; // Create and import UserScreen
-import CallScreen from './screens/CallScreen'; // Create and import CallScreen
+import SearchScreen from './screens/SearchScreen'; // Create and import CallScreen
+import ChatScreen from './screens/ChatScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,7 +18,8 @@ const App = () => {
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Register" component={RegisterScreen} />
         <Stack.Screen name="User" component={UserScreen} />
-        <Stack.Screen name="Call" component={CallScreen} /> 
+        <Stack.Screen name="Search" component={SearchScreen} /> 
+        <Stack.Screen name="Chat" component={ChatScreen} /> 
       </Stack.Navigator>
     </NavigationContainer>
   );
