@@ -1,90 +1,116 @@
 import React from 'react';
-import { View, Text, StyleSheet, FlatList, Image } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View, Image, TouchableOpacity, Dimensions } from 'react-native';
+import { Feather } from '@expo/vector-icons';
+import BottomNavigation from './BottomNavigation';
 
-const ChatScreen = () => {
-  const messages = [
-    {
-      id: '1',
-      text: 'Hello! How can I help you today?',
-      createdAt: new Date(),
-      user: {
-        id: '2',
-        name: 'ChatBot',
-        avatar: 'https://placeimg.com/140/140/any',
-      },
-    },
-    {
-      id: '2',
-      text: 'Hi! I have a question about my order.',
-      createdAt: new Date(),
-      user: {
-        id: '1',
-        name: 'User',
-      },
-    },
-    // Add more messages here
-  ];
+const { width, height } = Dimensions.get('window');
 
-  const renderItem = ({ item }) => (
-    <View style={[styles.messageContainer, item.user.id === '1' ? styles.userMessage : styles.botMessage]}>
-      <Image source={{ uri: item.user.avatar }} style={styles.avatar} />
-      <View style={styles.messageBubble}>
-        <Text style={styles.messageText}>{item.text}</Text>
-      </View>
-    </View>
-  );
-
+const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <FlatList
-        data={messages}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-        inverted
-      />
+      
+      <View style={styles.buttonContainer}>
+        
+      </View>
+      <BottomNavigation />
+      <StatusBar style="auto" />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    padding: 10,
-  },
-  messageContainer: {
-    flexDirection: 'row',
-    marginVertical: 5,
-    alignItems: 'center',
-  },
-  userMessage: {
-    justifyContent: 'flex-end',
-  },
-  botMessage: {
-    justifyContent: 'flex-start',
-  },
-  avatar: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    marginRight: 10,
-  },
-  messageBubble: {
-    maxWidth: '70%',
-    padding: 10,
-    borderRadius: 15,
-  },
-  userMessageBubble: {
-    backgroundColor: '#0084ff',
-    alignSelf: 'flex-end',
-  },
-  botMessageBubble: {
-    backgroundColor: '#e5e5ea',
-    alignSelf: 'flex-start',
-  },
-  messageText: {
-    color: '#fff',
-  },
-});
+    container: {
+      flex: 1,
+      backgroundColor: '#fff',
+      alignItems: 'center',
+      justifyContent: 'space-around',
+      padding: 5,
+      position: 'relative', // Add relative positioning to the container
+    },
+    iconContainer: {
+      alignSelf: 'flex-start',
+      position: 'absolute',
+      top: 20,
+      left: 20,
+    },
+    container1: {
+      flex: 0.3,
+      justifyContent: 'center',
+      alignItems: 'center',
+      padding: 20,
+      backgroundColor: '#FFC0CB',
+      borderRadius: 10,
+      borderWidth: 1,
+      borderColor: '#FF69B4',
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 2,
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 3.84,
+      elevation: 5,
+    },
+    text: {
+      fontSize: 16,
+      textAlign: 'center',
+    },
+    image: {
+      width: width * 0.6,
+      height: width * 0.6,
+      resizeMode: 'contain',
+      alignSelf: 'center',
+    },
+    buttonContainer: {
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      width: '90%',
+      marginTop: 20,
+    },
+    button: {
+      backgroundColor: '#4CAF50',
+      borderRadius: 5,
+      padding: 10,
+      width: width * 0.4,
+      alignItems: 'center',
+    },
+    buttonreg: {
+      backgroundColor: '#007BFF',
+      borderRadius: 5,
+      padding: 10,
+      width: width * 0.4,
+      alignItems: 'center',
+    },
+    buttonText: {
+      color: '#fff',
+      fontSize: 16,
+    },
+    buttonTextreg: {
+      color: '#fff',
+      fontSize: 18,
+    },
+    bottomIconsContainer: {
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      width: '100%',
+      padding: 10,
+      position: 'absolute',
+      bottom: 0,
+      backgroundColor: '#fff',
+      borderTopWidth: 1,  // Add border only to the top
+  borderTopColor: '#ccc',  // Border color for the top
+    },
+    bottomIcon: {
+      borderRadius: 10,
+      padding: 5,
+      width: 60,
+      height: 40,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: '#f0f0f0',
+    },
+  });
+  
 
-export default ChatScreen;
+export default HomeScreen;

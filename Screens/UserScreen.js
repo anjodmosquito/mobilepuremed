@@ -2,6 +2,7 @@ import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, TouchableOpacity, Dimensions } from 'react-native';
 import { Feather } from '@expo/vector-icons';
+import BottomNavigation from './BottomNavigation';
 
 const { width, height } = Dimensions.get('window');
 
@@ -17,20 +18,7 @@ const HomeScreen = ({ navigation }) => {
           <Text style={styles.buttonTextreg}>Register</Text>
         </TouchableOpacity>
       </View>
-      <View style={styles.bottomIconsContainer}>
-        <TouchableOpacity style={styles.bottomIcon} onPress={() => navigation.navigate('Home')}>
-          <Feather name="home" size={24} color="blue" />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.bottomIcon} onPress={() => navigation.navigate('User')}>
-          <Feather name="user" size={24} color="blue" />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.bottomIcon} onPress={() => navigation.navigate('Call')}>
-          <Feather name="search" size={24} color="blue" />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.bottomIcon} onPress={() => navigation.navigate('Chat')}>
-          <Feather name="message-circle" size={24} color="blue" />
-        </TouchableOpacity>
-      </View>
+      <BottomNavigation />
       <StatusBar style="auto" />
     </View>
   );

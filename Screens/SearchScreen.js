@@ -2,6 +2,7 @@ import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, TouchableOpacity, Dimensions } from 'react-native';
 import { Feather } from '@expo/vector-icons';
+import BottomNavigation from './BottomNavigation';
 
 
 const { width, height } = Dimensions.get('window');
@@ -12,25 +13,7 @@ const CallScreen = ({ navigation }) => {
       <Text>Call Screen</Text>
 
       <Image source={require('../assets/puremed.jpg')} style={styles.image} />
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Login')}>
-          <Text style={styles.buttonText}>Login</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonreg} onPress={() => navigation.navigate('Register')}>
-          <Text style={styles.buttonTextreg}>Register</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.bottomIconsContainer}>
-        <TouchableOpacity style={styles.bottomIcon} onPress={() => navigation.navigate('Home')}>
-          <Feather name="home" size={24} color="black" />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.bottomIcon} onPress={() => navigation.navigate('User')}>
-          <Feather name="user" size={24} color="black" />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.bottomIcon} onPress={() => navigation.navigate('Call')}>
-          <Feather name="phone-call" size={24} color="black" />
-        </TouchableOpacity>
-      </View>
+      <BottomNavigation />
       <StatusBar style="auto" />
     </View>
 
