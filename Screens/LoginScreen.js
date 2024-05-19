@@ -23,7 +23,6 @@ export default function App() {
           Experience the Puremed Pharmacy difference – reserve your medicines today and embark on a journey to better health with our exceptional care!
         </Text>
       </View>
-      <Image source={require('./assets/puremed.jpg')} style={styles.image} />
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <TextInput
         style={{ height: 40, width: 300, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10 }}
