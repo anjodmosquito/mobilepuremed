@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, TouchableOpacity, Dimensions } from 'react-native';
-import { Feather } from '@expo/vector-icons';
+import { StyleSheet, Text, View, Image, TouchableOpacity, Dimensions, TextInput, Alert } from 'react-native';
 
 const { width, height } = Dimensions.get('window');
 
-const HomeScreen = ({ navigation }) => {
+export default function App() {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = () => {
+    if (username === 'admin' && password === 'password') {
+      Alert.alert('Login Successful');
+    } else {
+      Alert.alert('Invalid Username or Password');
+    }
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.container1}>
@@ -13,31 +23,39 @@ const HomeScreen = ({ navigation }) => {
           Experience the Puremed Pharmacy difference – reserve your medicines today and embark on a journey to better health with our exceptional care!
         </Text>
       </View>
-      
-      <Image source={require('../assets/puremed.jpg')} style={styles.image} />
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <TextInput
+        style={{ height: 40, width: 300, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10 }}
+        placeholder="Username"
+        onChangeText={text => setUsername(text)}
+        value={username}
+      />
+      <TextInput
+        style={{ height: 40, width: 300, borderColor: 'gray', borderWidth: 1, marginBottom: 10, paddingHorizontal: 10 }}
+        placeholder="Password"
+        onChangeText={text => setPassword(text)}
+        value={password}
+        secureTextEntry={true}
+      />
+      <TouchableOpacity
+        style={{ backgroundColor: 'blue', padding: 10, borderRadius: 5 }}
+        onPress={handleLogin}
+      >
+        <Text style={{ color: 'white', fontWeight: 'bold' }}>Login</Text>
+      </TouchableOpacity>
+    </View>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Login')}>
+        <TouchableOpacity style={styles.button} onPress={handleLogin}>
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonreg} onPress={() => navigation.navigate('Register')}>
+        <TouchableOpacity style={styles.buttonreg}>
           <Text style={styles.buttonTextreg}>Register</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.bottomIconsContainer}>
-        <TouchableOpacity style={styles.bottomIcon} onPress={() => navigation.navigate('Home')}>
-          <Feather name="home" size={24} color="black" />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.bottomIcon} onPress={() => navigation.navigate('User')}>
-          <Feather name="user" size={24} color="black" />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.bottomIcon} onPress={() => navigation.navigate('Call')}>
-          <Feather name="phone-call" size={24} color="black" />
         </TouchableOpacity>
       </View>
       <StatusBar style="auto" />
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -45,13 +63,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'space-around',
-    padding: 5,
-  },
-  iconContainer: {
-    alignSelf: 'flex-start',
-    position: 'absolute',
-    top: 20,
-    left: 20,
+    padding: 20,
   },
   container1: {
     flex: 0.3,
@@ -76,10 +88,10 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   image: {
-    width: width * 0.6,
-    height: width * 0.6,
+    width: width * 0.8,
+    height: width * 0.8,
     resizeMode: 'contain',
-    alignSelf: 'center', // Center-align the image horizontally
+    alignSelf: 'center', // Add this line to center-align the image horizontally
   },
   buttonContainer: {
     flexDirection: 'row',
@@ -109,21 +121,4 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 18,
   },
-  bottomIconsContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    width: '100%',
-    marginTop: 20,
-  },
-  bottomIcon: {
-    backgroundColor: '#ddd',
-    borderRadius: 25,
-    padding: 10,
-    width: 50,
-    height: 50,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
 });
-
-export default HomeScreen;
