@@ -9,10 +9,8 @@ const { width, height } = Dimensions.get('window');
 const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
+      <Text>Chat</Text>
       
-      <View style={styles.buttonContainer}>
-        
-      </View>
       <BottomNavigation />
       <StatusBar style="auto" />
     </View>

@@ -6,14 +6,14 @@ import { useNavigation } from '@react-navigation/native';
 
 const { width } = Dimensions.get('window');
 
-export default function LoginScreen() {
+export default function Main() {
   const navigation = useNavigation();
 
   return (
     <View style={styles.mainContainer}>
       <Image source={require('../assets/puremed.jpg')} style={styles.logo} />
       
-      <Text style={styles.createAccount}>Login to your Account</Text>
+      <Text style={styles.createAccount}>Create an Account</Text>
       <Text style={styles.welcomeMessage}>
         Welcome to PureMed Pharmacy, create an account with us to get started.
       </Text>
@@ -28,15 +28,19 @@ export default function LoginScreen() {
           secureTextEntry
         />
       </View>
-      
-      <TouchableOpacity style={styles.registerButton}onPress={() => navigation.navigate('Home')}>
-        <Text style={styles.registerText}>Login</Text>
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.input}
+          placeholder="Confirm Password"
+          placeholderTextColor="#aaa"
+          secureTextEntry
+        />
+      </View>
+      <TouchableOpacity style={styles.registerButton} onPress={() => navigation.navigate('Login')}>
+        <Text style={styles.registerText}>Register</Text>
       </TouchableOpacity>
-      <TouchableOpacity>
-        <Text style={styles.accountText}>Forgot Password?</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate('Register')}>
-        <Text style={styles.accountText}>Register?</Text>
+      <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+        <Text style={styles.accountText}>I already have an account.</Text>
       </TouchableOpacity>
     </View>
   );

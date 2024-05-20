@@ -9,21 +9,7 @@ const { width, height } = Dimensions.get('window');
 const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <View style={styles.container1}>
-        <Text style={styles.text}>
-          Experience the Puremed Pharmacy difference – reserve your medicines today and embark on a journey to better health with our exceptional care!
-        </Text>
-      </View>
       
-      <Image source={require('../assets/puremed.jpg')} style={styles.image} />
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Login')}>
-          <Text style={styles.buttonText}>Login</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonreg} onPress={() => navigation.navigate('Register')}>
-          <Text style={styles.buttonTextreg}>Register</Text>
-        </TouchableOpacity>
-      </View>
       <BottomNavigation />
       <StatusBar style="auto" />
     </View>

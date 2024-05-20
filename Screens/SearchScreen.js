@@ -10,9 +10,8 @@ const { width, height } = Dimensions.get('window');
 const CallScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text>Call Screen</Text>
-
-      <Image source={require('../assets/puremed.jpg')} style={styles.image} />
+      <Text>Search</Text>
+      
       <BottomNavigation />
       <StatusBar style="auto" />
     </View>

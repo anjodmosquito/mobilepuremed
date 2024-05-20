@@ -9,15 +9,8 @@ const { width, height } = Dimensions.get('window');
 const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
+      <Text>User</Text>
       
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Login')}>
-          <Text style={styles.buttonText}>Login</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonreg} onPress={() => navigation.navigate('Register')}>
-          <Text style={styles.buttonTextreg}>Register</Text>
-        </TouchableOpacity>
-      </View>
       <BottomNavigation />
       <StatusBar style="auto" />
     </View>
