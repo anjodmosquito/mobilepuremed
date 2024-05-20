@@ -29,7 +29,7 @@ export default function LoginScreen() {
         />
       </View>
       
-      <TouchableOpacity style={styles.registerButton}onPress={() => navigation.navigate('Home')}>
+      <TouchableOpacity style={styles.registerButton}onPress={() => navigation.navigate('Dashboard')}>
         <Text style={styles.registerText}>Login</Text>
       </TouchableOpacity>
       <TouchableOpacity>

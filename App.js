@@ -5,6 +5,7 @@ import Register from './accounts/Register';
 import SplashScreen from './screens/SplashScreen';
 import HomeScreen from './screens/HomeScreen';
 import LoginScreen from './screens/LoginScreen';
+import DashboardScreen from './dashboard/DashboardScreen';
 
 import UserScreen from './screens/UserScreen'; // Create and import UserScreen
 import SearchScreen from './screens/SearchScreen'; // Create and import CallScreen
@@ -32,6 +33,8 @@ const App = () => {
         <Stack.Screen name="User" component={UserScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Search" component={SearchScreen} options={{ headerShown: false }} /> 
         <Stack.Screen name="Chat" component={ChatScreen} options={{ headerShown: false }}/> 
+        <Stack.Screen name="Dashboard" component={DashboardScreen} options={{ headerShown: false }}/> 
+
       </Stack.Navigator>
     </NavigationContainer>
   );
