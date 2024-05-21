@@ -6,7 +6,7 @@ import BottomNavigation from './BottomNavigation';
 
 const { width, height } = Dimensions.get('window');
 
-const HomeScreen = ({ navigation }) => {
+const UserScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text>User</Text>
@@ -111,4 +111,4 @@ const styles = StyleSheet.create({
   });
   
 
-export default HomeScreen;
+export default UserScreen;

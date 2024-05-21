@@ -1,13 +1,15 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, TextInput, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome'; // Import FontAwesome icons
+import { useNavigation } from '@react-navigation/native';
 
 export default function DashboardScreen() {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.mainContainer}>
       {/* Top Bar */}
       
-
       {/* Notification, Logo, and Cart */}
       <View style={styles.header}>
         <TouchableOpacity>
@@ -25,25 +27,24 @@ export default function DashboardScreen() {
         <View style={styles.searchBar}>
           <Icon name="search" style={styles.searchIcon} />
           <TextInput
-            placeholder="Search for medicines"
+            placeholder="Search"
             style={styles.searchInput}
           />
         </View>
 
         {/* Categories */}
         <View style={styles.categories}>
-          <Text style={styles.sectionTitle}>Categories</Text>
           <View style={styles.categoryRow}>
             <TouchableOpacity style={styles.categoryCard}>
-              <Icon name="medkit" style={styles.categoryIcon} />
+              <Image source={require('../assets/puremed.jpg')} style={styles.categoryImage} />
               <Text style={styles.categoryText}>Tablets</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.categoryCard}>
-              <Icon name="needle" style={styles.categoryIcon} />
+              <Image source={require('../assets/puremed.jpg')} style={styles.categoryImage} />
               <Text style={styles.categoryText}>Injections</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.categoryCard}>
-              <Icon name="flask" style={styles.categoryIcon} />
+              <Image source={require('../assets/puremed.jpg')} style={styles.categoryImage} />
               <Text style={styles.categoryText}>Syrups</Text>
             </TouchableOpacity>
           </View>
@@ -54,25 +55,33 @@ export default function DashboardScreen() {
           <Text style={styles.sectionTitle}>Special Offers</Text>
           <View style={styles.offerCard}>
             <Text style={styles.offerText}>15% OFF - Aspirin 80 mg Tablet</Text>
+            <Text style={styles.offerPrice}>₱0.51</Text>
           </View>
           <View style={styles.offerCard}>
-            <Text style={styles.offerText}>20% OFF - Omron BP Monitor</Text>
+            <Text style={styles.offerText}>10% OFF - Beractant 25 mg/mL, 4 mL Depot Powder for Injection Vial</Text>
+            <Text style={styles.offerPrice}>₱3.10</Text>
           </View>
-          <View style={styles.offerCard}>
-            <Text style={styles.offerText}>Buy 1 Get 1 Free - Vitamin C</Text>
+        </View>
+
+        {/* Today's Offer */}
+        <View style={styles.todaysOffer}>
+          <Text style={styles.sectionTitle}>Today's Offer</Text>
+          <View style={styles.offerDetailCard}>
+            <Image source={require('../assets/splash.png')} style={styles.offerDetailImage} />
+            <Text style={styles.offerDetailText}>Civodex is a sterile ophthalmic solution containing Dexamethasone -</Text>
           </View>
         </View>
       </ScrollView>
 
       {/* Bottom Icons */}
       <View style={styles.bottomIcons}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
           <Icon name="home" style={styles.bottomIcon} />
           <Text style={styles.bottomIconText}>Home</Text>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Search')}>
           <Icon name="search" style={styles.bottomIcon} />
-          <Text style={styles.bottomIconText}>Cart</Text>
+          <Text style={styles.bottomIconText}>Search</Text>
         </TouchableOpacity>
         <TouchableOpacity>
           <Icon name="user" style={styles.bottomIcon} />
@@ -92,34 +101,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#f8f8f8',
   },
-  topBar: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingHorizontal: 20,
-    paddingTop: 40,
-  },
-  leftSide: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  time: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  timeText: {
-    color: '#333',
-    fontSize: 18,
-  },
-  rightSide: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  icon: {
-    fontSize: 24, // Increased font size for better visibility
-    color: '#333',
-    marginHorizontal: 10, // Increased margin for spacing
-  },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -129,19 +110,19 @@ const styles = StyleSheet.create({
   },
   headerIcon: {
     fontSize: 30,
-    color: 'white', // Set the text color to transparent
-    textShadowColor: 'blue', // Set the color of the text shadow to blue
-    textShadowOffset: { width: 0, height: 0 }, // Set the offset of the shadow to zero
-    textShadowRadius: 3, // Set the radius of the shadow to create an outline effect
+    color: 'white',
+    textShadowColor: 'blue',
+    textShadowOffset: { width: 0, height: 0 },
+    textShadowRadius: 3,
   },
   logo: {
-    width: 200, // Adjust width to fit the logo
-    height: 75, // Adjust height to fit the logo
+    width: 200,
+    height: 75,
     resizeMode: 'contain',
   },
   mainContent: {
+    paddingHorizontal: 20,
     alignItems: 'center',
-    justifyContent: 'center',
   },
   searchBar: {
     flexDirection: 'row',
@@ -150,7 +131,8 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     paddingHorizontal: 10,
     paddingVertical: 5,
-    margin: 20,
+    marginVertical: 20,
+    width: '100%',
     elevation: 2,
   },
   searchIcon: {
@@ -164,7 +146,6 @@ const styles = StyleSheet.create({
   },
   categories: {
     width: '100%',
-    paddingHorizontal: 20,
   },
   sectionTitle: {
     fontSize: 18,
@@ -184,18 +165,18 @@ const styles = StyleSheet.create({
     width: '30%',
     elevation: 2,
   },
-  categoryIcon: {
-    fontSize: 30,
-    color: '#007BFF',
+  categoryImage: {
+    width: 50,
+    height: 50,
     marginBottom: 10,
+    resizeMode: 'contain',
   },
   categoryText: {
-    fontSize: 14,
+    fontSize: 13,
     color: '#333',
   },
   specialOffers: {
     width: '100%',
-    paddingHorizontal: 20,
     marginVertical: 20,
   },
   offerCard: {
@@ -204,8 +185,39 @@ const styles = StyleSheet.create({
     padding: 15,
     marginVertical: 5,
     elevation: 2,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   offerText: {
+    fontSize: 16,
+    color: '#333',
+  },
+  offerPrice: {
+    fontSize: 16,
+    color: '#333',
+    fontWeight: 'bold',
+  },
+  todaysOffer: {
+    width: '100%',
+    marginVertical: 20,
+  },
+  offerDetailCard: {
+    backgroundColor: '#fff',
+    borderRadius: 8,
+    padding: 15,
+    marginVertical: 5,
+    elevation: 2,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  offerDetailImage: {
+    width: 50,
+    height: 50,
+    marginRight: 10,
+    resizeMode: 'contain',
+  },
+  offerDetailText: {
     fontSize: 16,
     color: '#333',
   },
@@ -219,10 +231,10 @@ const styles = StyleSheet.create({
   },
   bottomIcon: {
     fontSize: 30,
-    color: 'white', // Set the text color to transparent
-    textShadowColor: 'blue', // Set the color of the text shadow to blue
-    textShadowOffset: { width: 0, height: 0 }, // Set the offset of the shadow to zero
-    textShadowRadius: 3, // Set the radius of the shadow to create an outline effect
+    color: 'white',
+    textShadowColor: 'blue',
+    textShadowOffset: { width: 0, height: 0 },
+    textShadowRadius: 3,
   },
   bottomIconText: {
     fontSize: 12,
