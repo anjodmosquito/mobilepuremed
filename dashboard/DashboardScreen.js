@@ -36,15 +36,15 @@ export default function DashboardScreen() {
         <View style={styles.categories}>
           <View style={styles.categoryRow}>
             <TouchableOpacity style={styles.categoryCard}>
-              <Image source={require('../assets/puremed.jpg')} style={styles.categoryImage} />
+              <Image source={require('../assets/drugs.png')} style={styles.categoryImage} />
               <Text style={styles.categoryText}>Tablets</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.categoryCard}>
-              <Image source={require('../assets/puremed.jpg')} style={styles.categoryImage} />
+              <Image source={require('../assets/medical.png')} style={styles.categoryImage} />
               <Text style={styles.categoryText}>Injections</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.categoryCard}>
-              <Image source={require('../assets/puremed.jpg')} style={styles.categoryImage} />
+              <Image source={require('../assets/syrup.png')} style={styles.categoryImage} />
               <Text style={styles.categoryText}>Syrups</Text>
             </TouchableOpacity>
           </View>
@@ -120,7 +120,7 @@ export default function DashboardScreen() {
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    backgroundColor: 'rgba(173, 216, 230, 0.5)', // Light blue with 50% opacity
+    backgroundColor: 'rgba(175, 216, 800, 0.5)', // Light blue with 50% opacity
     shadowColor: '#007BFF',
   },
   header: {
@@ -129,6 +129,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 20,
     paddingVertical: 10,
+    marginTop: 10,
   },
   headerIcon: {
     fontSize: 30,
@@ -140,7 +141,7 @@ const styles = StyleSheet.create({
   logo: {
     width: 200,
     height: 75,
-    resizeMode: 'contain',
+    borderRadius: 10,
   },
   mainContent: {
     paddingHorizontal: 20,
@@ -181,8 +182,8 @@ const styles = StyleSheet.create({
   categoryCard: {
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#fff',
-    borderRadius: 8,
+    backgroundColor: 'white', 
+    borderRadius: 10,
     padding: 20,
     width: '30%',
     elevation: 2,
@@ -268,6 +269,7 @@ const styles = StyleSheet.create({
     textShadowColor: 'blue',
     textShadowOffset: { width: 0, height: 0 },
     textShadowRadius: 3,
+    
   },
   bottomIconText: {
     fontSize: 12,

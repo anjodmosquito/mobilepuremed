@@ -8,10 +8,16 @@ export default function ChatScreen() {
 
   return (
     <View style={styles.mainContainer}>
+      {/* Watermark Logo */}
+      <Image
+        source={{ uri: 'https://example.com/your-logo.png' }} // Replace with your logo URL or require statement
+        style={styles.watermark}
+      />
+
       {/* Top Bar */}
       <View style={styles.header}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Icon name="arrow-left" style={styles.headerIcon1} />
+          <Icon name="arrow-left" style={styles.headerIcon} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Steve Gomez</Text>
         <View style={styles.iconContainer}>
@@ -47,6 +53,20 @@ export default function ChatScreen() {
           <Text style={styles.messageTime}>5 minutes ago</Text>
         </View>
       </ScrollView>
+
+      {/* Reply Box */}
+      <View style={styles.reply}>
+        <TouchableOpacity>
+          <Icon name="paperclip" style={styles.replyIcon} />
+        </TouchableOpacity>
+        <TextInput
+          style={styles.replyInput}
+          placeholder="Type a message"
+        />
+        <TouchableOpacity>
+          <Icon name="send" style={styles.replyIcon} />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -55,6 +75,15 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     backgroundColor: '#f8f8f8',
+    backgroundColor: 'rgba(175, 216, 255, 0.5)', // Light blue with 50% opacity
+    shadowColor: '#007BFF',
+  },
+  watermark: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    opacity: 0.1,
+    resizeMode: 'contain',
   },
   header: {
     flexDirection: 'row',
@@ -62,9 +91,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 20,
     paddingVertical: 30,
-    backgroundColor: '#ADD8E6',
-    shadowColor: '#007BFF',
-    elevation: 10, // For Android
   },
   iconContainer: {
     flexDirection: 'row',
@@ -87,18 +113,21 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
   },
-  message: {
+  myMessage: {
     marginBottom: 10,
-    borderWidth: 0.5,
+    borderWidth: 1,
     paddingHorizontal: 20,
     padding: 10,
     borderRadius: 8,
+    backgroundColor: 'white',
+    alignSelf: 'flex-start',
   },
-  myMessage: {
+  message: {
     alignSelf: 'flex-end',
     backgroundColor: '#007BFF',
     borderRadius: 8,
-    padding: 10,
+    padding: 11,
+    borderWidth: 1,
     color: 'white',
   },
   messageText: {
@@ -110,24 +139,22 @@ const styles = StyleSheet.create({
     color: '#888',
     textAlign: 'right',
   },
-  bottomIcons: {
+  reply: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
-    paddingVertical: 10,
+    alignItems: 'center',
+    padding: 10,
     borderTopWidth: 0.5,
     borderTopColor: '#ccc',
     backgroundColor: '#fff',
   },
-  bottomIcon: {
-    fontSize: 30,
-    color: 'white',
-    textShadowColor: 'blue',
-    textShadowOffset: { width: 0, height: 0 },
-    textShadowRadius: 3,
+  replyInput: {
+    flex: 1,
+    fontSize: 16,
+    paddingHorizontal: 10,
   },
-  bottomIconText: {
-    fontSize: 12,
+  replyIcon: {
+    fontSize: 25,
     color: '#007BFF',
-    textAlign: 'center',
+    marginHorizontal: 10,
   },
 });

@@ -63,7 +63,8 @@ export default function UserScreen() {
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    backgroundColor: '#f8f8f8',
+    backgroundColor: 'rgba(175, 216, 800, 0.5)', // Light blue with 50% opacity
+    shadowColor: '#007BFF',
   },
   header: {
     flexDirection: 'row',
@@ -71,6 +72,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 20,
     paddingVertical: 10,
+    marginTop: 10,
   },
   headerIcon: {
     fontSize: 30,
@@ -82,7 +84,7 @@ const styles = StyleSheet.create({
   logo: {
     width: 200,
     height: 75,
-    resizeMode: 'contain',
+    borderRadius: 10,
   },
   mainContent: {
     paddingHorizontal: 20,
@@ -200,6 +202,9 @@ const styles = StyleSheet.create({
     borderTopWidth: 0.5,
     borderTopColor: '#ccc',
     backgroundColor: '#fff',
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
   },
   bottomIcon: {
     fontSize: 30,
@@ -207,6 +212,7 @@ const styles = StyleSheet.create({
     textShadowColor: 'blue',
     textShadowOffset: { width: 0, height: 0 },
     textShadowRadius: 3,
+    
   },
   bottomIconText: {
     fontSize: 12,
