@@ -52,22 +52,43 @@ export default function DashboardScreen() {
 
         {/* Special Offers */}
         <View style={styles.specialOffers}>
-          <Text style={styles.sectionTitle}>Special Offers</Text>
+          <Text style={styles.sectionTitle}>Medicines</Text>
+          <TouchableOpacity>
           <View style={styles.offerCard}>
-            <Text style={styles.offerText}>15% OFF - Aspirin 80 mg Tablet</Text>
-            <Text style={styles.offerPrice}>₱0.51</Text>
+            <Image source={require('../assets/puremed.jpg')} style={styles.offerImage} />
+            <View style={styles.offerDetails}>
+              <Text style={styles.offerText}>15% OFF - Aspirin 80 mg Tablet</Text>
+              <Text style={styles.offerPrice}>₱1.50</Text>
+            </View>
           </View>
+          </TouchableOpacity>
           <View style={styles.offerCard}>
-            <Text style={styles.offerText}>10% OFF - Beractant 25 mg/mL, 4 mL Depot Powder for Injection Vial</Text>
-            <Text style={styles.offerPrice}>₱3.10</Text>
+            <Image source={require('../assets/puremed.jpg')} style={styles.offerImage} />
+            <View style={styles.offerDetails}>
+              <Text style={styles.offerText}>10% OFF - Beractant 25 mg/mL, 4 mL Depot Powder for Injection Vial</Text>
+              <Text style={styles.offerPrice}>₱3.10</Text>
+            </View>
           </View>
         </View>
+
 
         {/* Today's Offer */}
         <View style={styles.todaysOffer}>
           <Text style={styles.sectionTitle}>Today's Offer</Text>
           <View style={styles.offerDetailCard}>
-            <Image source={require('../assets/splash.png')} style={styles.offerDetailImage} />
+            <Image source={require('../assets/puremed.jpg')} style={styles.offerDetailImage} />
+            <Text style={styles.offerDetailText}>Civodex is a sterile ophthalmic solution containing Dexamethasone -</Text>
+          </View>
+          <View style={styles.offerDetailCard}>
+            <Image source={require('../assets/puremed.jpg')} style={styles.offerDetailImage} />
+            <Text style={styles.offerDetailText}>Civodex is a sterile ophthalmic solution containing Dexamethasone -</Text>
+          </View>
+          <View style={styles.offerDetailCard}>
+            <Image source={require('../assets/puremed.jpg')} style={styles.offerDetailImage} />
+            <Text style={styles.offerDetailText}>Civodex is a sterile ophthalmic solution containing Dexamethasone -</Text>
+          </View>
+          <View style={styles.offerDetailCard}>
+            <Image source={require('../assets/puremed.jpg')} style={styles.offerDetailImage} />
             <Text style={styles.offerDetailText}>Civodex is a sterile ophthalmic solution containing Dexamethasone -</Text>
           </View>
         </View>
@@ -82,12 +103,12 @@ export default function DashboardScreen() {
         <TouchableOpacity onPress={() => navigation.navigate('Search')}>
           <Icon name="search" style={styles.bottomIcon} />
           <Text style={styles.bottomIconText}>Search</Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
+        </TouchableOpacity >
+        <TouchableOpacity onPress={() => navigation.navigate('User')}>
           <Icon name="user" style={styles.bottomIcon} />
           <Text style={styles.bottomIconText}>Profile</Text>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Chat')}>
           <Icon name="comments" style={styles.bottomIcon} />
           <Text style={styles.bottomIconText}>Chat</Text>
         </TouchableOpacity>
@@ -99,14 +120,15 @@ export default function DashboardScreen() {
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    backgroundColor: '#f8f8f8',
+    backgroundColor: 'rgba(173, 216, 230, 0.5)', // Light blue with 50% opacity
+    shadowColor: '#007BFF',
   },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: 20,
-    paddingVertical: 23,
+    paddingVertical: 10,
   },
   headerIcon: {
     fontSize: 30,
@@ -186,8 +208,16 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     elevation: 2,
     flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
+  },
+  offerImage: {
+    width: 50,
+    height: 50,
+    marginRight: 10,
+    resizeMode: 'contain',
+  },
+  offerDetails: {
+    flex: 1,
   },
   offerText: {
     fontSize: 16,
@@ -228,6 +258,9 @@ const styles = StyleSheet.create({
     borderTopWidth: 0.5,
     borderTopColor: '#ccc',
     backgroundColor: '#fff',
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
   },
   bottomIcon: {
     fontSize: 30,

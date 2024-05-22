@@ -1,114 +1,216 @@
 import React from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, TouchableOpacity, Dimensions } from 'react-native';
-import { Feather } from '@expo/vector-icons';
-import BottomNavigation from './BottomNavigation';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, TextInput, Image } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome'; // Import FontAwesome icons
+import { useNavigation } from '@react-navigation/native';
 
-const { width, height } = Dimensions.get('window');
+export default function UserScreen() {
+  const navigation = useNavigation();
 
-const UserScreen = ({ navigation }) => {
   return (
-    <View style={styles.container}>
-      <Text>User</Text>
+    <View style={styles.mainContainer}>
+      {/* Top Bar */}
       
-      <BottomNavigation />
-      <StatusBar style="auto" />
+      {/* Notification, Logo, and Cart */}
+      <View style={styles.header}>
+        <TouchableOpacity>
+          <Icon name="bell" style={styles.headerIcon} />
+        </TouchableOpacity>
+        <Image source={require('../assets/puremed.jpg')} style={styles.logo} />
+        <TouchableOpacity>
+          <Icon name="shopping-cart" style={styles.headerIcon} />
+        </TouchableOpacity>
+      </View>
+
+      {/* Main Content */}
+      <ScrollView contentContainerStyle={styles.mainContent}>
+        {/* Search Bar */}
+        
+        
+
+        
+
+
+        {/* Today's Offer */}
+        <View style={styles.todaysOffer}>
+          <Text style={styles.sectionTitle}>Profile</Text>
+          
+        </View>
+      </ScrollView>
+
+      {/* Bottom Icons */}
+      <View style={styles.bottomIcons}>
+        <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
+          <Icon name="home" style={styles.bottomIcon} />
+          <Text style={styles.bottomIconText}>Home</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Search')}>
+          <Icon name="search" style={styles.bottomIcon} />
+          <Text style={styles.bottomIconText}>Search</Text>
+        </TouchableOpacity >
+        <TouchableOpacity onPress={() => navigation.navigate('User')}>
+          <Icon name="user" style={styles.bottomIcon} />
+          <Text style={styles.bottomIconText}>Profile</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Chat')}>
+          <Icon name="comments" style={styles.bottomIcon} />
+          <Text style={styles.bottomIconText}>Chat</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'space-around',
-      padding: 5,
-      position: 'relative', // Add relative positioning to the container
-    },
-    iconContainer: {
-      alignSelf: 'flex-start',
-      position: 'absolute',
-      top: 20,
-      left: 20,
-    },
-    container1: {
-      flex: 0.3,
-      justifyContent: 'center',
-      alignItems: 'center',
-      padding: 20,
-      backgroundColor: '#FFC0CB',
-      borderRadius: 10,
-      borderWidth: 1,
-      borderColor: '#FF69B4',
-      shadowColor: '#000',
-      shadowOffset: {
-        width: 0,
-        height: 2,
-      },
-      shadowOpacity: 0.25,
-      shadowRadius: 3.84,
-      elevation: 5,
-    },
-    text: {
-      fontSize: 16,
-      textAlign: 'center',
-    },
-    image: {
-      width: width * 0.6,
-      height: width * 0.6,
-      resizeMode: 'contain',
-      alignSelf: 'center',
-    },
-    buttonContainer: {
-      flexDirection: 'row',
-      justifyContent: 'space-around',
-      width: '90%',
-      marginTop: 20,
-    },
-    button: {
-      backgroundColor: '#4CAF50',
-      borderRadius: 5,
-      padding: 10,
-      width: width * 0.4,
-      alignItems: 'center',
-    },
-    buttonreg: {
-      backgroundColor: '#007BFF',
-      borderRadius: 5,
-      padding: 10,
-      width: width * 0.4,
-      alignItems: 'center',
-    },
-    buttonText: {
-      color: '#fff',
-      fontSize: 16,
-    },
-    buttonTextreg: {
-      color: '#fff',
-      fontSize: 18,
-    },
-    bottomIconsContainer: {
-      flexDirection: 'row',
-      justifyContent: 'space-around',
-      width: '100%',
-      padding: 10,
-      position: 'absolute',
-      bottom: 0,
-      backgroundColor: '#fff',
-      borderTopWidth: 1,  // Add border only to the top
-  borderTopColor: '#ccc',  // Border color for the top
-    },
-    bottomIcon: {
-      borderRadius: 10,
-      padding: 5,
-      width: 60,
-      height: 40,
-      alignItems: 'center',
-      justifyContent: 'center',
-      backgroundColor: '#f0f0f0',
-    },
-  });
-  
-
-export default UserScreen;
+  mainContainer: {
+    flex: 1,
+    backgroundColor: '#f8f8f8',
+  },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+  },
+  headerIcon: {
+    fontSize: 30,
+    color: 'white',
+    textShadowColor: 'blue',
+    textShadowOffset: { width: 0, height: 0 },
+    textShadowRadius: 3,
+  },
+  logo: {
+    width: 200,
+    height: 75,
+    resizeMode: 'contain',
+  },
+  mainContent: {
+    paddingHorizontal: 20,
+    alignItems: 'center',
+  },
+  searchBar: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    borderRadius: 8,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    marginVertical: 20,
+    width: '100%',
+    elevation: 2,
+  },
+  searchIcon: {
+    fontSize: 20,
+    color: '#888',
+    marginRight: 10,
+  },
+  searchInput: {
+    flex: 1,
+    fontSize: 16,
+  },
+  categories: {
+    width: '100%',
+  },
+  sectionTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginVertical: 10,
+  },
+  categoryRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  categoryCard: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#fff',
+    borderRadius: 8,
+    padding: 20,
+    width: '30%',
+    elevation: 2,
+  },
+  categoryImage: {
+    width: 50,
+    height: 50,
+    marginBottom: 10,
+    resizeMode: 'contain',
+  },
+  categoryText: {
+    fontSize: 13,
+    color: '#333',
+  },
+  specialOffers: {
+    width: '100%',
+    marginVertical: 20,
+  },
+  offerCard: {
+    backgroundColor: '#fff',
+    borderRadius: 8,
+    padding: 15,
+    marginVertical: 5,
+    elevation: 2,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  offerImage: {
+    width: 50,
+    height: 50,
+    marginRight: 10,
+    resizeMode: 'contain',
+  },
+  offerDetails: {
+    flex: 1,
+  },
+  offerText: {
+    fontSize: 16,
+    color: '#333',
+  },
+  offerPrice: {
+    fontSize: 16,
+    color: '#333',
+    fontWeight: 'bold',
+  },
+  todaysOffer: {
+    width: '100%',
+    marginVertical: 20,
+  },
+  offerDetailCard: {
+    backgroundColor: '#fff',
+    borderRadius: 8,
+    padding: 15,
+    marginVertical: 5,
+    elevation: 2,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  offerDetailImage: {
+    width: 50,
+    height: 50,
+    marginRight: 10,
+    resizeMode: 'contain',
+  },
+  offerDetailText: {
+    fontSize: 16,
+    color: '#333',
+  },
+  bottomIcons: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    paddingVertical: 10,
+    borderTopWidth: 0.5,
+    borderTopColor: '#ccc',
+    backgroundColor: '#fff',
+  },
+  bottomIcon: {
+    fontSize: 30,
+    color: 'white',
+    textShadowColor: 'blue',
+    textShadowOffset: { width: 0, height: 0 },
+    textShadowRadius: 3,
+  },
+  bottomIconText: {
+    fontSize: 12,
+    color: '#007BFF',
+    textAlign: 'center',
+  },
+});

@@ -1,114 +1,133 @@
 import React from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, TouchableOpacity, Dimensions } from 'react-native';
-import { Feather } from '@expo/vector-icons';
-import BottomNavigation from './BottomNavigation';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, TextInput, Image } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome'; // Import FontAwesome icons
+import { useNavigation } from '@react-navigation/native';
 
-const { width, height } = Dimensions.get('window');
+export default function ChatScreen() {
+  const navigation = useNavigation();
 
-const HomeScreen = ({ navigation }) => {
   return (
-    <View style={styles.container}>
-      <Text>Chat</Text>
-      
-      <BottomNavigation />
-      <StatusBar style="auto" />
+    <View style={styles.mainContainer}>
+      {/* Top Bar */}
+      <View style={styles.header}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Icon name="arrow-left" style={styles.headerIcon1} />
+        </TouchableOpacity>
+        <Text style={styles.headerTitle}>Steve Gomez</Text>
+        <View style={styles.iconContainer}>
+          <TouchableOpacity>
+            <Icon name="bell" style={styles.headerIcon} />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Icon name="shopping-cart" style={styles.headerIcon} />
+          </TouchableOpacity>
+        </View>
+      </View>
+
+      {/* Chat Content */}
+      <ScrollView style={styles.chatContainer}>
+        <View style={styles.message}>
+          <Text style={styles.messageText}>Hello</Text>
+          <Text style={styles.messageTime}>5 minutes ago</Text>
+        </View>
+        <View style={[styles.message, styles.myMessage]}>
+          <Text style={styles.messageText}>hi! im Steve, how can i help you?</Text>
+          <Text style={styles.messageTime}>5 minutes ago</Text>
+        </View>
+        <View style={styles.message}>
+          <Text style={styles.messageText}>im having issues with my reservation</Text>
+          <Text style={styles.messageTime}>5 minutes ago</Text>
+        </View>
+        <View style={[styles.message, styles.myMessage]}>
+          <Text style={styles.messageText}>Please follow instructions accordingly</Text>
+          <Text style={styles.messageTime}>5 minutes ago</Text>
+        </View>
+        <View style={styles.message}>
+          <Text style={styles.messageText}>thank u sir</Text>
+          <Text style={styles.messageTime}>5 minutes ago</Text>
+        </View>
+      </ScrollView>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'space-around',
-      padding: 5,
-      position: 'relative', // Add relative positioning to the container
-    },
-    iconContainer: {
-      alignSelf: 'flex-start',
-      position: 'absolute',
-      top: 20,
-      left: 20,
-    },
-    container1: {
-      flex: 0.3,
-      justifyContent: 'center',
-      alignItems: 'center',
-      padding: 20,
-      backgroundColor: '#FFC0CB',
-      borderRadius: 10,
-      borderWidth: 1,
-      borderColor: '#FF69B4',
-      shadowColor: '#000',
-      shadowOffset: {
-        width: 0,
-        height: 2,
-      },
-      shadowOpacity: 0.25,
-      shadowRadius: 3.84,
-      elevation: 5,
-    },
-    text: {
-      fontSize: 16,
-      textAlign: 'center',
-    },
-    image: {
-      width: width * 0.6,
-      height: width * 0.6,
-      resizeMode: 'contain',
-      alignSelf: 'center',
-    },
-    buttonContainer: {
-      flexDirection: 'row',
-      justifyContent: 'space-around',
-      width: '90%',
-      marginTop: 20,
-    },
-    button: {
-      backgroundColor: '#4CAF50',
-      borderRadius: 5,
-      padding: 10,
-      width: width * 0.4,
-      alignItems: 'center',
-    },
-    buttonreg: {
-      backgroundColor: '#007BFF',
-      borderRadius: 5,
-      padding: 10,
-      width: width * 0.4,
-      alignItems: 'center',
-    },
-    buttonText: {
-      color: '#fff',
-      fontSize: 16,
-    },
-    buttonTextreg: {
-      color: '#fff',
-      fontSize: 18,
-    },
-    bottomIconsContainer: {
-      flexDirection: 'row',
-      justifyContent: 'space-around',
-      width: '100%',
-      padding: 10,
-      position: 'absolute',
-      bottom: 0,
-      backgroundColor: '#fff',
-      borderTopWidth: 1,  // Add border only to the top
-  borderTopColor: '#ccc',  // Border color for the top
-    },
-    bottomIcon: {
-      borderRadius: 10,
-      padding: 5,
-      width: 60,
-      height: 40,
-      alignItems: 'center',
-      justifyContent: 'center',
-      backgroundColor: '#f0f0f0',
-    },
-  });
-  
-
-export default HomeScreen;
+  mainContainer: {
+    flex: 1,
+    backgroundColor: '#f8f8f8',
+  },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+    paddingVertical: 30,
+    backgroundColor: '#ADD8E6',
+    shadowColor: '#007BFF',
+    elevation: 10, // For Android
+  },
+  iconContainer: {
+    flexDirection: 'row',
+  },
+  headerIcon: {
+    fontSize: 25,
+    color: 'white',
+    marginHorizontal: 10,
+  },
+  headerIcon1: {
+    fontSize: 25,
+    color: 'blue',
+  },
+  headerTitle: {
+    fontSize: 18,
+    color: 'white',
+    fontWeight: 'bold',
+  },
+  chatContainer: {
+    flex: 1,
+    padding: 10,
+  },
+  message: {
+    marginBottom: 10,
+    borderWidth: 0.5,
+    paddingHorizontal: 20,
+    padding: 10,
+    borderRadius: 8,
+  },
+  myMessage: {
+    alignSelf: 'flex-end',
+    backgroundColor: '#007BFF',
+    borderRadius: 8,
+    padding: 10,
+    color: 'white',
+  },
+  messageText: {
+    fontSize: 16,
+    color: '#333',
+  },
+  messageTime: {
+    fontSize: 12,
+    color: '#888',
+    textAlign: 'right',
+  },
+  bottomIcons: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    paddingVertical: 10,
+    borderTopWidth: 0.5,
+    borderTopColor: '#ccc',
+    backgroundColor: '#fff',
+  },
+  bottomIcon: {
+    fontSize: 30,
+    color: 'white',
+    textShadowColor: 'blue',
+    textShadowOffset: { width: 0, height: 0 },
+    textShadowRadius: 3,
+  },
+  bottomIconText: {
+    fontSize: 12,
+    color: '#007BFF',
+    textAlign: 'center',
+  },
+});
