@@ -127,8 +127,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#007BFF',
     borderRadius: 8,
     padding: 11,
-    borderWidth: 1,
+    borderWidth: 0.5,
     color: 'white',
+    marginBottom: 5,
   },
   messageText: {
     fontSize: 16,

@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, TextInput, Image } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome'; // Import FontAwesome icons
 import { useNavigation } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/FontAwesome'; // Import FontAwesome icons
 
 export default function DashboardScreen() {
   const navigation = useNavigation();
@@ -13,11 +13,11 @@ export default function DashboardScreen() {
       {/* Notification, Logo, and Cart */}
       <View style={styles.header}>
         <TouchableOpacity>
-          <Icon name="bell" style={styles.headerIcon} />
+          <Image source={require('../assets/notification.png')} style={styles.headerIcon} />
         </TouchableOpacity>
         <Image source={require('../assets/puremed.jpg')} style={styles.logo} />
         <TouchableOpacity>
-          <Icon name="shopping-cart" style={styles.headerIcon} />
+          <Image source={require('../assets/cart.png')} style={styles.headerIcon} />
         </TouchableOpacity>
       </View>
 
@@ -97,19 +97,19 @@ export default function DashboardScreen() {
       {/* Bottom Icons */}
       <View style={styles.bottomIcons}>
         <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
-          <Icon name="home" style={styles.bottomIcon} />
+          <Image source={require('../assets/home.png')} style={styles.bottomIcon} />
           <Text style={styles.bottomIconText}>Home</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('Search')}>
-          <Icon name="search" style={styles.bottomIcon} />
+          <Image source={require('../assets/search.png')} style={styles.bottomIcon} />
           <Text style={styles.bottomIconText}>Search</Text>
-        </TouchableOpacity >
+        </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('User')}>
-          <Icon name="user" style={styles.bottomIcon} />
+          <Image source={require('../assets/user.png')} style={styles.bottomIcon} />
           <Text style={styles.bottomIconText}>Profile</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('Chat')}>
-          <Icon name="comments" style={styles.bottomIcon} />
+          <Image source={require('../assets/chat.png')} style={styles.bottomIcon} />
           <Text style={styles.bottomIconText}>Chat</Text>
         </TouchableOpacity>
       </View>
@@ -120,7 +120,7 @@ export default function DashboardScreen() {
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    backgroundColor: 'rgba(175, 216, 800, 0.5)', // Light blue with 50% opacity
+    backgroundColor: 'rgba(175, 216, 255, 0.5)', // Light blue with 50% opacity
     shadowColor: '#007BFF',
   },
   header: {
@@ -137,6 +137,9 @@ const styles = StyleSheet.create({
     textShadowColor: 'blue',
     textShadowOffset: { width: 0, height: 0 },
     textShadowRadius: 3,
+    width: 30,
+    height: 30,
+    resizeMode: 'contain',
   },
   logo: {
     width: 200,
@@ -264,12 +267,9 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   bottomIcon: {
-    fontSize: 30,
-    color: 'white',
-    textShadowColor: 'blue',
-    textShadowOffset: { width: 0, height: 0 },
-    textShadowRadius: 3,
-    
+    width: 30,
+    height: 30,
+    resizeMode: 'contain',
   },
   bottomIconText: {
     fontSize: 12,

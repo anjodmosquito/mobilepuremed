@@ -3,7 +3,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Register from './accounts/Register';
 import SplashScreen from './screens/SplashScreen';
-import HomeScreen from './screens/HomeScreen';
 import LoginScreen from './screens/LoginScreen';
 import DashboardScreen from './dashboard/DashboardScreen';
 
@@ -22,11 +21,7 @@ const App = () => {
           component={SplashScreen} 
           options={{ headerShown: false }}  // Hide the header for HomeScreen
         />
-      <Stack.Screen 
-          name="Home" 
-          component={HomeScreen} 
-          options={{ headerShown: false }}  // Hide the header for HomeScreen
-        />
+      
         <Stack.Screen name="Register" component={Register} options={{ headerShown: false }} />
         <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
         

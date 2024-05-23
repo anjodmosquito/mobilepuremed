@@ -13,11 +13,11 @@ export default function SearchScreen() {
       {/* Notification, Logo, and Cart */}
       <View style={styles.header}>
         <TouchableOpacity>
-          <Icon name="bell" style={styles.headerIcon} />
+          <Image source={require('../assets/notification.png')} style={styles.headerIcon} />
         </TouchableOpacity>
         <Image source={require('../assets/puremed.jpg')} style={styles.logo} />
         <TouchableOpacity>
-          <Icon name="shopping-cart" style={styles.headerIcon} />
+          <Image source={require('../assets/cart.png')} style={styles.headerIcon} />
         </TouchableOpacity>
       </View>
 
@@ -34,7 +34,7 @@ export default function SearchScreen() {
 
         {/* Categories */}
         <View style={styles.categories}>
-        <View style={styles.categoryRow}>
+          <View style={styles.categoryRow}>
             <TouchableOpacity style={styles.categoryCard}>
               <Image source={require('../assets/drugs.png')} style={styles.categoryImage} />
               <Text style={styles.categoryText}>Tablets</Text>
@@ -56,19 +56,19 @@ export default function SearchScreen() {
       {/* Bottom Icons */}
       <View style={styles.bottomIcons}>
         <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
-          <Icon name="home" style={styles.bottomIcon} />
+          <Image source={require('../assets/home.png')} style={styles.bottomIcon} />
           <Text style={styles.bottomIconText}>Home</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('Search')}>
-          <Icon name="search" style={styles.bottomIcon} />
+          <Image source={require('../assets/search.png')} style={styles.bottomIcon} />
           <Text style={styles.bottomIconText}>Search</Text>
-        </TouchableOpacity >
+        </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('User')}>
-          <Icon name="user" style={styles.bottomIcon} />
+          <Image source={require('../assets/user.png')} style={styles.bottomIcon} />
           <Text style={styles.bottomIconText}>Profile</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('Chat')}>
-          <Icon name="comments" style={styles.bottomIcon} />
+          <Image source={require('../assets/chat.png')} style={styles.bottomIcon} />
           <Text style={styles.bottomIconText}>Chat</Text>
         </TouchableOpacity>
       </View>
@@ -96,6 +96,9 @@ const styles = StyleSheet.create({
     textShadowColor: 'blue',
     textShadowOffset: { width: 0, height: 0 },
     textShadowRadius: 3,
+    width: 30,
+    height: 30,
+    resizeMode: 'contain',
   },
   logo: {
     width: 200,
@@ -223,12 +226,9 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   bottomIcon: {
-    fontSize: 30,
-    color: 'white',
-    textShadowColor: 'blue',
-    textShadowOffset: { width: 0, height: 0 },
-    textShadowRadius: 3,
-    
+    width: 30,
+    height: 30,
+    resizeMode: 'contain',
   },
   bottomIconText: {
     fontSize: 12,
