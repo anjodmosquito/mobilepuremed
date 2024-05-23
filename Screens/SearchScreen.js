@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
   categoryCard: {
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: '#00BFFF',
     borderRadius: 8,
     padding: 20,
     width: '30%',

@@ -54,7 +54,7 @@ export default function DashboardScreen() {
         <View style={styles.specialOffers}>
           <Text style={styles.sectionTitle}>Medicines</Text>
           <TouchableOpacity>
-          <View style={styles.offerCard}>
+          <View style={styles.medicineCard}>
             <Image source={require('../assets/puremed.jpg')} style={styles.offerImage} />
             <View style={styles.offerDetails}>
               <Text style={styles.offerText}>15% OFF - Aspirin 80 mg Tablet</Text>
@@ -62,7 +62,7 @@ export default function DashboardScreen() {
             </View>
           </View>
           </TouchableOpacity>
-          <View style={styles.offerCard}>
+          <View style={styles.medicineCard}>
             <Image source={require('../assets/puremed.jpg')} style={styles.offerImage} />
             <View style={styles.offerDetails}>
               <Text style={styles.offerText}>10% OFF - Beractant 25 mg/mL, 4 mL Depot Powder for Injection Vial</Text>
@@ -185,7 +185,7 @@ const styles = StyleSheet.create({
   categoryCard: {
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'white', 
+    backgroundColor: '#00BFFF', 
     borderRadius: 10,
     padding: 20,
     width: '30%',
@@ -205,7 +205,7 @@ const styles = StyleSheet.create({
     width: '100%',
     marginVertical: 20,
   },
-  offerCard: {
+  medicineCard: {
     backgroundColor: '#fff',
     borderRadius: 8,
     padding: 15,
@@ -235,6 +235,7 @@ const styles = StyleSheet.create({
   todaysOffer: {
     width: '100%',
     marginVertical: 20,
+    marginBottom: 70,
   },
   offerDetailCard: {
     backgroundColor: '#fff',
@@ -254,6 +255,7 @@ const styles = StyleSheet.create({
   offerDetailText: {
     fontSize: 16,
     color: '#333',
+    flex: 1,
   },
   bottomIcons: {
     flexDirection: 'row',

@@ -19,13 +19,13 @@ export default function ChatScreen() {
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Icon name="arrow-left" style={styles.headerIcon} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Steve Gomez</Text>
+        <Text style={styles.headerTitle}>Dr. Jlou Kiasan</Text>
         <View style={styles.iconContainer}>
           <TouchableOpacity>
-            <Icon name="bell" style={styles.headerIcon} />
+            <Image source={require('../assets/notification.png')} style={styles.headerIcon} />
           </TouchableOpacity>
           <TouchableOpacity>
-            <Icon name="shopping-cart" style={styles.headerIcon} />
+            <Image source={require('../assets/cart.png')} style={styles.headerIcon} />
           </TouchableOpacity>
         </View>
       </View>
@@ -37,7 +37,7 @@ export default function ChatScreen() {
           <Text style={styles.messageTime}>5 minutes ago</Text>
         </View>
         <View style={[styles.message, styles.myMessage]}>
-          <Text style={styles.messageText}>hi! im Steve, how can i help you?</Text>
+          <Text style={styles.messageText}>Hi! I am Dr. Jlou, How can i help you?</Text>
           <Text style={styles.messageTime}>5 minutes ago</Text>
         </View>
         <View style={styles.message}>
@@ -45,7 +45,7 @@ export default function ChatScreen() {
           <Text style={styles.messageTime}>5 minutes ago</Text>
         </View>
         <View style={[styles.message, styles.myMessage]}>
-          <Text style={styles.messageText}>Please follow instructions accordingly</Text>
+          <Text style={styles.messageText}>Please follow instructions accordingly.</Text>
           <Text style={styles.messageTime}>5 minutes ago</Text>
         </View>
         <View style={styles.message}>
@@ -96,9 +96,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   headerIcon: {
-    fontSize: 25,
+    fontSize: 30,
     color: 'white',
-    marginHorizontal: 10,
+    textShadowColor: 'blue',
+    textShadowOffset: { width: 0, height: 0 },
+    textShadowRadius: 3,
+    width: 30,
+    height: 30,
+    resizeMode: 'contain',
+    marginRight: 3,
   },
   headerIcon1: {
     fontSize: 25,
@@ -106,7 +112,7 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     fontSize: 18,
-    color: 'white',
+    color: 'black',
     fontWeight: 'bold',
   },
   chatContainer: {
@@ -124,7 +130,7 @@ const styles = StyleSheet.create({
   },
   message: {
     alignSelf: 'flex-end',
-    backgroundColor: '#007BFF',
+    backgroundColor: '#00BFFF',
     borderRadius: 8,
     padding: 11,
     borderWidth: 0.5,
@@ -137,7 +143,7 @@ const styles = StyleSheet.create({
   },
   messageTime: {
     fontSize: 12,
-    color: '#888',
+    color: 'red',
     textAlign: 'right',
   },
   reply: {

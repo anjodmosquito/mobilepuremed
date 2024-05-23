@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, TextInput, Image } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome'; // Import FontAwesome icons
 import { useNavigation } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/FontAwesome'; // Import FontAwesome icons
 
 export default function UserScreen() {
   const navigation = useNavigation();
@@ -9,8 +9,6 @@ export default function UserScreen() {
   return (
     <View style={styles.mainContainer}>
       {/* Top Bar */}
-      
-      {/* Notification, Logo, and Cart */}
       <View style={styles.header}>
         <TouchableOpacity>
           <Image source={require('../assets/notification.png')} style={styles.headerIcon} />
@@ -23,17 +21,46 @@ export default function UserScreen() {
 
       {/* Main Content */}
       <ScrollView contentContainerStyle={styles.mainContent}>
-        {/* Search Bar */}
-        
-        
+        {/* Profile Section */}
+        <View style={styles.profileContainer}>
+          <Image source={require('../assets/notification.png')} style={styles.profileImage} />
+          <Text style={styles.profileName}>Mary Adefarasin</Text>
+          <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+            <Text style={styles.logoutText}>Log out</Text>
+          </TouchableOpacity>
+        </View>
 
-        
+        {/* Menu Items */}
+        <View style={styles.menuItem}>
+          <Icon name="user" style={styles.menuIcon} />
+          <Text style={styles.menuText}>Personal Data</Text>
+          <Icon name="chevron-right" style={styles.chevronIcon} />
+        </View>
+        <View style={styles.menuItem}>
+          <Icon name="cog" style={styles.menuIcon} />
+          <Text style={styles.menuText}>Settings</Text>
+          <Icon name="chevron-right" style={styles.chevronIcon} />
+        </View>
+        <View style={styles.menuItem}>
+          <Icon name="history" style={styles.menuIcon} />
+          <Text style={styles.menuText}>Reservation History</Text>
+          <Icon name="chevron-right" style={styles.chevronIcon} />
+        </View>
+        <View style={styles.menuItem}>
+          <Icon name="file-text" style={styles.menuIcon} />
+          <Text style={styles.menuText}>E-Statement</Text>
+          <Icon name="chevron-right" style={styles.chevronIcon} />
+        </View>
+        <View style={styles.menuItem}>
+          <Icon name="share-alt" style={styles.menuIcon} />
+          <Text style={styles.menuText}>Tell your friend</Text>
+          <Icon name="chevron-right" style={styles.chevronIcon} />
+        </View>
 
-
-        {/* Today's Offer */}
-        <View style={styles.todaysOffer}>
-          <Text style={styles.sectionTitle}>Profile</Text>
-          
+        {/* Footer */}
+        <View style={styles.footer}>
+          <Icon name="headphones" style={styles.footerIcon} />
+          <Text style={styles.footerText}>Feel free to consult our pharmacist</Text>
         </View>
       </ScrollView>
 
@@ -63,7 +90,7 @@ export default function UserScreen() {
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    backgroundColor: 'rgba(175, 216, 800, 0.5)', // Light blue with 50% opacity
+    backgroundColor: 'rgba(175, 216, 255, 0.5)', // Light blue with 50% opacity
     shadowColor: '#007BFF',
   },
   header: {
@@ -75,11 +102,6 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   headerIcon: {
-    fontSize: 30,
-    color: 'white',
-    textShadowColor: 'blue',
-    textShadowOffset: { width: 0, height: 0 },
-    textShadowRadius: 3,
     width: 30,
     height: 30,
     resizeMode: 'contain',
@@ -91,110 +113,63 @@ const styles = StyleSheet.create({
   },
   mainContent: {
     paddingHorizontal: 20,
-    alignItems: 'center',
   },
-  searchBar: {
+  profileContainer: {
+    alignItems: 'center',
+    marginVertical: 20,
+  },
+  profileImage: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    marginBottom: 10,
+  },
+  profileName: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  logoutText: {
+    color: 'blue',
+    marginTop: 5,
+  },
+  menuItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: '#00BFFF',
     borderRadius: 8,
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    marginVertical: 20,
-    width: '100%',
+    padding: 15,
+    marginVertical: 5,
     elevation: 2,
   },
-  searchIcon: {
+  menuIcon: {
     fontSize: 20,
     color: '#888',
     marginRight: 10,
   },
-  searchInput: {
+  menuText: {
     flex: 1,
     fontSize: 16,
-  },
-  categories: {
-    width: '100%',
-  },
-  sectionTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginVertical: 10,
-  },
-  categoryRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  categoryCard: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#fff',
-    borderRadius: 8,
-    padding: 20,
-    width: '30%',
-    elevation: 2,
-  },
-  categoryImage: {
-    width: 50,
-    height: 50,
-    marginBottom: 10,
-    resizeMode: 'contain',
-  },
-  categoryText: {
-    fontSize: 13,
     color: '#333',
   },
-  specialOffers: {
-    width: '100%',
-    marginVertical: 20,
+  chevronIcon: {
+    fontSize: 20,
+    color: '#888',
   },
-  offerCard: {
-    backgroundColor: '#fff',
-    borderRadius: 8,
-    padding: 15,
-    marginVertical: 5,
-    elevation: 2,
+  footer: {
     flexDirection: 'row',
     alignItems: 'center',
+    backgroundColor: '#f0f0f0',
+    borderRadius: 8,
+    padding: 15,
+    marginVertical: 20,
   },
-  offerImage: {
-    width: 50,
-    height: 50,
+  footerIcon: {
+    fontSize: 20,
+    color: '#888',
     marginRight: 10,
-    resizeMode: 'contain',
   },
-  offerDetails: {
+  footerText: {
     flex: 1,
-  },
-  offerText: {
-    fontSize: 16,
-    color: '#333',
-  },
-  offerPrice: {
-    fontSize: 16,
-    color: '#333',
-    fontWeight: 'bold',
-  },
-  todaysOffer: {
-    width: '100%',
-    marginVertical: 20,
-  },
-  offerDetailCard: {
-    backgroundColor: '#fff',
-    borderRadius: 8,
-    padding: 15,
-    marginVertical: 5,
-    elevation: 2,
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  offerDetailImage: {
-    width: 50,
-    height: 50,
-    marginRight: 10,
-    resizeMode: 'contain',
-  },
-  offerDetailText: {
     fontSize: 16,
     color: '#333',
   },
