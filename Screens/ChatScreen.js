@@ -10,7 +10,7 @@ export default function ChatScreen() {
     <View style={styles.mainContainer}>
       {/* Watermark Logo */}
       <Image
-        source={{ uri: 'https://example.com/your-logo.png' }} // Replace with your logo URL or require statement
+        source={require('../assets/puremed.jpg')} // Replace with your logo URL or require statement
         style={styles.watermark}
       />
 
@@ -24,7 +24,7 @@ export default function ChatScreen() {
           <TouchableOpacity>
             <Image source={require('../assets/notification.png')} style={styles.headerIcon} />
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
             <Image source={require('../assets/cart.png')} style={styles.headerIcon} />
           </TouchableOpacity>
         </View>

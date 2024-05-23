@@ -16,8 +16,8 @@ export default function DashboardScreen() {
           <Image source={require('../assets/notification.png')} style={styles.headerIcon} />
         </TouchableOpacity>
         <Image source={require('../assets/puremed.jpg')} style={styles.logo} />
-        <TouchableOpacity>
-          <Image source={require('../assets/cart.png')} style={styles.headerIcon} />
+        <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
+          <Image source={require('../assets/cart.png')} style={styles.headerIcon}  />
         </TouchableOpacity>
       </View>
 

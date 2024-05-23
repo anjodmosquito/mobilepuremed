@@ -14,7 +14,7 @@ export default function UserScreen() {
           <Image source={require('../assets/notification.png')} style={styles.headerIcon} />
         </TouchableOpacity>
         <Image source={require('../assets/puremed.jpg')} style={styles.logo} />
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
           <Image source={require('../assets/cart.png')} style={styles.headerIcon} />
         </TouchableOpacity>
       </View>
@@ -23,8 +23,8 @@ export default function UserScreen() {
       <ScrollView contentContainerStyle={styles.mainContent}>
         {/* Profile Section */}
         <View style={styles.profileContainer}>
-          <Image source={require('../assets/notification.png')} style={styles.profileImage} />
-          <Text style={styles.profileName}>Mary Adefarasin</Text>
+          <Image source={require('../assets/student.png')} style={styles.profileImage} />
+          <Text style={styles.profileName}>Manifesting Graduation</Text>
           <TouchableOpacity onPress={() => navigation.navigate('Login')}>
             <Text style={styles.logoutText}>Log out</Text>
           </TouchableOpacity>

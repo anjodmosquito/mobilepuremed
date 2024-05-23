@@ -1,24 +1,42 @@
-
-
-import React from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Dimensions, Image } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Dimensions, Image, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const { width } = Dimensions.get('window');
 
 export default function LoginScreen() {
   const navigation = useNavigation();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const defaultEmail = 'admin';
+  const defaultPassword = 'admin';
+
+  const handleLogin = () => {
+    if (email === defaultEmail && password === defaultPassword) {
+      navigation.navigate('Dashboard');
+      Alert.alert('Success', 'Welcome!');
+    } else {
+      Alert.alert('Error', 'Invalid email or password');
+    }
+  };
 
   return (
     <View style={styles.mainContainer}>
       <Image source={require('../assets/puremed.jpg')} style={styles.logo} />
-      
+
       <Text style={styles.createAccount}>Login to your Account</Text>
       <Text style={styles.welcomeMessage}>
-        Welcome to PureMed Pharmacy, create an account with us to get started.
+        Welcome to PureMed Pharmacy, log in to get started.
       </Text>
       <View style={styles.inputContainer}>
-        <TextInput style={styles.input} placeholder="Email Address" placeholderTextColor="#aaa" />
+        <TextInput
+          style={styles.input}
+          placeholder="Email Address"
+          placeholderTextColor="#aaa"
+          value={email}
+          onChangeText={setEmail}
+        />
       </View>
       <View style={styles.inputContainer}>
         <TextInput
@@ -26,10 +44,12 @@ export default function LoginScreen() {
           placeholder="Password"
           placeholderTextColor="#aaa"
           secureTextEntry
+          value={password}
+          onChangeText={setPassword}
         />
       </View>
-      
-      <TouchableOpacity style={styles.registerButton}onPress={() => navigation.navigate('Dashboard')}>
+
+      <TouchableOpacity style={styles.registerButton} onPress={handleLogin}>
         <Text style={styles.registerText}>Login</Text>
       </TouchableOpacity>
       <TouchableOpacity>
@@ -66,7 +86,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginVertical: 10,
     paddingHorizontal: 20,
-    color: '#666',
+    color: 'black',
   },
   inputContainer: {
     width: '100%',
