@@ -9,6 +9,10 @@ const ReservedoneScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+        <Image
+        source={require('../assets/puremed.jpg')} // Replace with your logo URL or require statement
+        style={styles.watermark}
+      />
       <View style={styles.checkmarkContainer}>
         <Icon name="check-circle" size={100} color="#007BFF" />
       </View>
@@ -21,7 +25,7 @@ const ReservedoneScreen = ({ navigation }) => {
         You can claim your reservation within 24hrs with the code given above. Please show it over the counter for your payment. Thank you!
       </Text>
       <TouchableOpacity style={styles.button} onPress={handleGoBackHome}>
-        <Text style={styles.buttonText}>Go back to Dashboard</Text>
+        <Text style={styles.buttonText}>Go back Home</Text>
       </TouchableOpacity>
     </View>
   );
@@ -36,6 +40,14 @@ const styles = StyleSheet.create({
     shadowColor: '#007BFF',
     paddingHorizontal: 20,
   },
+  watermark: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    opacity: 0.2,
+    resizeMode: 'contain',
+    borderRadius: 10,
+  },
   checkmarkContainer: {
     marginBottom: 20,
     alignItems: 'center',
@@ -49,7 +61,7 @@ const styles = StyleSheet.create({
   },
   messageText: {
     fontSize: 16,
-    color: '#666',
+    color: 'black',
     textAlign: 'center',
     marginBottom: 20,
   },
@@ -67,7 +79,7 @@ const styles = StyleSheet.create({
   },
   instructionsText: {
     fontSize: 14,
-    color: '#666',
+    color: 'black',
     textAlign: 'center',
     marginBottom: 40,
   },

@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Dimensions, Image, Alert, ActivityIndicator } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Dimensions, Image, ActivityIndicator } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
+
 const { width } = Dimensions.get('window');
 
-export default function CheckoutScreen() {
+export default function ReceiptScreen() {
   const navigation = useNavigation();
   const [paymentOption, setPaymentOption] = useState('Reservation Fee');
   const [paymentMethod, setPaymentMethod] = useState('GCash');
@@ -13,11 +14,10 @@ export default function CheckoutScreen() {
 
   const handlePayLater = () => {
     setIsLoading(true);
-    setTimeout(() =>{
+    setTimeout(() => {
       setIsLoading(false);
       navigation.navigate('Reservedone');
     }, 1000);
-    
   };
 
   const handlePayNow = () => {
@@ -25,7 +25,6 @@ export default function CheckoutScreen() {
     setTimeout(() => {
       setIsLoading(false);
       navigation.navigate('Reservedone');
-      
     }, 1000); // Simulate a 1-second delay
   };
 
@@ -39,14 +38,13 @@ export default function CheckoutScreen() {
       </View>
 
       <View style={styles.content}>
-      <View style={styles.cartItem}>
+        <View style={styles.cartItem}>
           <Image source={require('../assets/puremed.jpg')} style={styles.productImage} />
           <View style={styles.productDetails}>
             <Text style={styles.productName}>Aspirin</Text>
             <Text style={styles.productDescription}>80 mg Capsule</Text>
             <Text style={styles.productPrice}>1.50</Text>
           </View>
-          
         </View>
         <Text style={styles.cartInfo}>1 Item in your cart</Text>
         <Text style={styles.totalAmount}>TOTAL <Text style={styles.amount}>1.50</Text></Text>
@@ -73,15 +71,16 @@ export default function CheckoutScreen() {
             <Text style={styles.optionText}>GCash</Text>
           </View>
         </TouchableOpacity>
+
+        {/* Include the UploadProofOfPayment component */}
+        
+
       </View>
 
       {isLoading ? (
         <ActivityIndicator size="large" color="#007BFF" style={styles.loading} />
       ) : (
         <>
-          <TouchableOpacity style={styles.payNowButton1} onPress={() => navigation.navigate('Uploadproof')}>
-            <Text style={styles.buttonText}>Upload Proof of Payment</Text>
-          </TouchableOpacity>
           <TouchableOpacity style={styles.payLaterButton} onPress={handlePayLater}>
             <Text style={styles.buttonText}>Pay Later</Text>
           </TouchableOpacity>
@@ -204,13 +203,6 @@ const styles = StyleSheet.create({
   },
   payNowButton: {
     backgroundColor: '#007BFF',
-    paddingVertical: 15,
-    borderRadius: 50,
-    marginVertical: 10,
-    alignItems: 'center',
-  },
-  payNowButton1: {
-    backgroundColor: 'green',
     paddingVertical: 15,
     borderRadius: 50,
     marginVertical: 10,

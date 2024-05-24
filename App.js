@@ -13,6 +13,8 @@ import CartScreen from './screens/CartScreen';
 import ReservedoneScreen from './screens/ReservedoneScreen';
 import History from './screens/History';
 import Ongoing from './screens/Ongoing';
+import Uploadproof from './screens/Uploadproof';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -38,6 +40,8 @@ const App = () => {
         <Stack.Screen name="Reservedone" component={ReservedoneScreen} options={{ headerShown: false }} />
         <Stack.Screen name="History" component={History} options={{ headerShown: false }} />
         <Stack.Screen name="Ongoing" component={Ongoing} options={{ headerShown: false }} />
+        <Stack.Screen name="Uploadproof" component={Uploadproof} options={{ headerShown: false }} />
+       
 
 
       </Stack.Navigator>

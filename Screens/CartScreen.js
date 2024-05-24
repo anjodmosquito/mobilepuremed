@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     borderBottomColor: '#E0E0E0',
     padding: 20,
     justifyContent: 'flex-start',
-    marginTop: 10,
+    marginTop: 20,
     
   },
   headerIcon: {
