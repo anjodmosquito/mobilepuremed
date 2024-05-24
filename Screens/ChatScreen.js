@@ -19,7 +19,7 @@ export default function ChatScreen() {
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Icon name="arrow-left" style={styles.headerIcon} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Dr. Jlou Kiasan</Text>
+        <Text style={styles.headerTitle}>Dr. Fulano Citer</Text>
         <View style={styles.iconContainer}>
           <TouchableOpacity>
             <Image source={require('../assets/notification.png')} style={styles.headerIcon} />
@@ -37,7 +37,7 @@ export default function ChatScreen() {
           <Text style={styles.messageTime}>5 minutes ago</Text>
         </View>
         <View style={[styles.message, styles.myMessage]}>
-          <Text style={styles.messageText}>Hi! I am Dr. Jlou, How can i help you?</Text>
+          <Text style={styles.messageText}>Hi! I am Dr. Fulano, How can i help you?</Text>
           <Text style={styles.messageTime}>5 minutes ago</Text>
         </View>
         <View style={styles.message}>
@@ -97,8 +97,7 @@ const styles = StyleSheet.create({
   },
   headerIcon: {
     fontSize: 30,
-    color: 'white',
-    textShadowColor: 'blue',
+    color: 'black',
     textShadowOffset: { width: 0, height: 0 },
     textShadowRadius: 3,
     width: 30,

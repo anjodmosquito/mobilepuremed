@@ -34,6 +34,7 @@ export default function DashboardScreen() {
 
         {/* Categories */}
         <View style={styles.categories}>
+        <Text style={styles.sectionTitle}>Categories</Text>
           <View style={styles.categoryRow}>
             <TouchableOpacity style={styles.categoryCard}>
               <Image source={require('../assets/drugs.png')} style={styles.categoryImage} />
@@ -53,24 +54,33 @@ export default function DashboardScreen() {
         {/* Special Offers */}
         <View style={styles.specialOffers}>
           <Text style={styles.sectionTitle}>Medicines</Text>
-          <TouchableOpacity>
           <View style={styles.medicineCard}>
             <Image source={require('../assets/puremed.jpg')} style={styles.offerImage} />
             <View style={styles.offerDetails}>
               <Text style={styles.offerText}>15% OFF - Aspirin 80 mg Tablet</Text>
               <Text style={styles.offerPrice}>₱1.50</Text>
             </View>
+            <TouchableOpacity 
+              style={styles.plusButton}
+              onPress={() => navigation.navigate('Cart')}
+            >
+              <Icon name="plus" style={styles.plusIcon} />
+            </TouchableOpacity>
           </View>
-          </TouchableOpacity>
           <View style={styles.medicineCard}>
             <Image source={require('../assets/puremed.jpg')} style={styles.offerImage} />
             <View style={styles.offerDetails}>
               <Text style={styles.offerText}>10% OFF - Beractant 25 mg/mL, 4 mL Depot Powder for Injection Vial</Text>
               <Text style={styles.offerPrice}>₱3.10</Text>
             </View>
+            <TouchableOpacity 
+              style={styles.plusButton}
+              onPress={() => navigation.navigate('Cart')}
+            >
+              <Icon name="plus" style={styles.plusIcon} />
+            </TouchableOpacity>
           </View>
         </View>
-
 
         {/* Today's Offer */}
         <View style={styles.todaysOffer}>
@@ -231,6 +241,15 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#333',
     fontWeight: 'bold',
+  },
+  plusButton: {
+    padding: 10,
+    borderRadius: 50,
+    backgroundColor: '#007BFF',
+  },
+  plusIcon: {
+    fontSize: 20,
+    color: 'white',
   },
   todaysOffer: {
     width: '100%',

@@ -5,11 +5,14 @@ import Register from './accounts/Register';
 import SplashScreen from './screens/SplashScreen';
 import LoginScreen from './screens/LoginScreen';
 import DashboardScreen from './dashboard/DashboardScreen';
-import ReservationScreen from './screens/ReservationScreen';
+import CheckoutScreen from './screens/CheckoutScreen';
 import UserScreen from './screens/UserScreen'; // Create and import UserScreen
 import SearchScreen from './screens/SearchScreen'; // Create and import CallScreen
 import ChatScreen from './screens/ChatScreen';
 import CartScreen from './screens/CartScreen';
+import ReservedoneScreen from './screens/ReservedoneScreen';
+import History from './screens/History';
+import Ongoing from './screens/Ongoing';
 
 const Stack = createNativeStackNavigator();
 
@@ -31,7 +34,10 @@ const App = () => {
         <Stack.Screen name="Chat" component={ChatScreen} options={{ headerShown: false }}/> 
         <Stack.Screen name="Dashboard" component={DashboardScreen} options={{ headerShown: false }}/> 
         <Stack.Screen name="Cart" component={CartScreen} options={{ headerShown: false }}/> 
-        <Stack.Screen name="Reservation" component={ReservationScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Checkout" component={CheckoutScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Reservedone" component={ReservedoneScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="History" component={History} options={{ headerShown: false }} />
+        <Stack.Screen name="Ongoing" component={Ongoing} options={{ headerShown: false }} />
 
 
       </Stack.Navigator>

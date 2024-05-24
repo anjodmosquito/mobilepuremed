@@ -8,14 +8,19 @@ export default function LoginScreen() {
   const navigation = useNavigation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
-  const defaultEmail = 'admin';
-  const defaultPassword = 'admin';
+  const defaultEmail = '';
+  const defaultPassword = '';
 
   const handleLogin = () => {
     if (email === defaultEmail && password === defaultPassword) {
-      navigation.navigate('Dashboard');
-      Alert.alert('Success', 'Welcome!');
+      setIsLoading(true);
+      setTimeout(() => {
+        setIsLoading(false);
+        navigation.navigate('Dashboard');
+        
+      }, 1000); // Simulate a 2-second delay
     } else {
       Alert.alert('Error', 'Invalid email or password');
     }
@@ -23,41 +28,48 @@ export default function LoginScreen() {
 
   return (
     <View style={styles.mainContainer}>
-      <Image source={require('../assets/puremed.jpg')} style={styles.logo} />
+      {isLoading ? (
+        <Image source={require('../assets/puremed.jpg')} style={styles.watermark} />
+        
+      ) : (
+        <>
+          <Image source={require('../assets/puremed.jpg')} style={styles.logo} />
 
-      <Text style={styles.createAccount}>Login to your Account</Text>
-      <Text style={styles.welcomeMessage}>
-        Welcome to PureMed Pharmacy, log in to get started.
-      </Text>
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.input}
-          placeholder="Email Address"
-          placeholderTextColor="#aaa"
-          value={email}
-          onChangeText={setEmail}
-        />
-      </View>
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.input}
-          placeholder="Password"
-          placeholderTextColor="#aaa"
-          secureTextEntry
-          value={password}
-          onChangeText={setPassword}
-        />
-      </View>
+          <Text style={styles.createAccount}>Login to your Account</Text>
+          <Text style={styles.welcomeMessage}>
+            Welcome to PureMed Pharmacy, log in to get started.
+          </Text>
+          <View style={styles.inputContainer}>
+            <TextInput
+              style={styles.input}
+              placeholder="Email Address"
+              placeholderTextColor="#aaa"
+              value={email}
+              onChangeText={setEmail}
+            />
+          </View>
+          <View style={styles.inputContainer}>
+            <TextInput
+              style={styles.input}
+              placeholder="Password"
+              placeholderTextColor="#aaa"
+              secureTextEntry
+              value={password}
+              onChangeText={setPassword}
+            />
+          </View>
 
-      <TouchableOpacity style={styles.registerButton} onPress={handleLogin}>
-        <Text style={styles.registerText}>Login</Text>
-      </TouchableOpacity>
-      <TouchableOpacity>
-        <Text style={styles.accountText}>Forgot Password?</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate('Register')}>
-        <Text style={styles.accountText}>Register?</Text>
-      </TouchableOpacity>
+          <TouchableOpacity style={styles.registerButton} onPress={handleLogin}>
+            <Text style={styles.registerText}>Login</Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text style={styles.accountText}>Forgot Password?</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+            <Text style={styles.accountText}>Register?</Text>
+          </TouchableOpacity>
+        </>
+      )}
     </View>
   );
 }
@@ -121,5 +133,16 @@ const styles = StyleSheet.create({
     color: 'black',
     marginTop: 10,
     textDecorationLine: 'underline',
+  },
+  loadingImage: {
+    width: 100,
+    height: 100,
+  },
+  watermark: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    opacity: 1,
+    resizeMode: 'contain',
   },
 });

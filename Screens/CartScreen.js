@@ -54,10 +54,24 @@ export default function CartScreen() {
         </View>
 
         {/* Reserve Button */}
-        <TouchableOpacity style={styles.reserveButton} onPress={() => navigation.navigate('Reservation')}>
+        <TouchableOpacity style={styles.reserveButton} onPress={() => navigation.navigate('Checkout')}>
           <Text style={styles.reserveButtonText}>Reserve</Text>
         </TouchableOpacity>
       </ScrollView>
+      <View style={styles.bottomIcons}>
+        <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
+          <Image source={require('../assets/home.png')} style={styles.bottomIcon} />
+          <Text style={styles.bottomIconText}>Home</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Ongoing')}>
+          <Image source={require('../assets/transactionlist.png')} style={styles.bottomIcon} />
+          <Text style={styles.bottomIconText}>Transactions</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Chat')}>
+          <Image source={require('../assets/chat.png')} style={styles.bottomIcon} />
+          <Text style={styles.bottomIconText}>Chat</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -65,23 +79,22 @@ export default function CartScreen() {
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    backgroundColor: '#F9F9F9',
+    backgroundColor: 'rgba(175, 216, 255, 0.5)', // Light blue with 50% opacity
+    shadowColor: '#007BFF',
   },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#00BFFF',
     borderBottomWidth: 1,
     borderBottomColor: '#E0E0E0',
-    paddingHorizontal: 20,
-    paddingVertical: 20,
+    padding: 20,
     justifyContent: 'flex-start',
+    marginTop: 10,
     
   },
   headerIcon: {
-    fontSize: 30,
-    color: 'white',
-    textShadowColor: 'blue',
+    fontSize: 24,
+    color: 'black',
     textShadowOffset: { width: 0, height: 0 },
     textShadowRadius: 3,
     width: 30,
@@ -199,5 +212,27 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: '#fff',
     fontWeight: 'bold',
+  },
+  bottomIcons: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    paddingVertical: 10,
+    borderTopWidth: 0.5,
+    borderTopColor: '#ccc',
+    backgroundColor: '#fff',
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    
+  },
+  bottomIcon: {
+    width: 30,
+    height: 30,
+    alignSelf: 'center',
+  },
+  bottomIconText: {
+    fontSize: 12,
+    color: '#007BFF',
+    textAlign: 'center',
   },
 });

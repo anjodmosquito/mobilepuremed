@@ -24,7 +24,7 @@ export default function UserScreen() {
         {/* Profile Section */}
         <View style={styles.profileContainer}>
           <Image source={require('../assets/student.png')} style={styles.profileImage} />
-          <Text style={styles.profileName}>Manifesting Graduation</Text>
+          <Text style={styles.profileName}>Fulano Tingatik</Text>
           <TouchableOpacity onPress={() => navigation.navigate('Login')}>
             <Text style={styles.logoutText}>Log out</Text>
           </TouchableOpacity>
@@ -41,10 +41,12 @@ export default function UserScreen() {
           <Text style={styles.menuText}>Settings</Text>
           <Icon name="chevron-right" style={styles.chevronIcon} />
         </View>
-        <View style={styles.menuItem}>
+        <View>
+        <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate('Ongoing')}>
           <Icon name="history" style={styles.menuIcon} />
           <Text style={styles.menuText}>Reservation History</Text>
           <Icon name="chevron-right" style={styles.chevronIcon} />
+          </TouchableOpacity>
         </View>
         <View style={styles.menuItem}>
           <Icon name="file-text" style={styles.menuIcon} />
@@ -137,7 +139,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#00BFFF',
     borderRadius: 8,
-    padding: 15,
+    padding: 17,
     marginVertical: 5,
     elevation: 2,
   },
